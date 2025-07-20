@@ -227,17 +227,34 @@
             transform: scale(0.9);
         }
 
-        /* Estado por defecto: estrellas vacías */
-        .star::before {
-            content: '☆';
-        }
+.star-rating {
+    display: flex;
+    gap: 4px;
+    direction: rtl; /* Invierte el orden visual */
+}
 
-        /* Efecto hover: llenar estrella hover y todas las anteriores */
-        .star:hover::before,
-        .star:hover ~ .star::before {
-            content: '★';
-        }
+/* Estado por defecto: estrellas vacías */
+.star::before {
+    content: '☆';
+}
 
+/* Primera estrella llena por defecto y semi-transparente */
+.star:last-child::before {
+    content: '★';
+    opacity: 0.5;
+}
+
+/* Efecto hover: llenar desde la estrella hover hacia la derecha */
+.star:hover::before,
+.star:hover ~ .star::before {
+    content: '★';
+    opacity: 1;
+}
+
+/* Restaurar opacidad completa en hover */
+.star:hover::before {
+    opacity: 1;
+}
         .loading { 
             text-align: center; 
             padding: 100px 20px; 
@@ -352,14 +369,14 @@
 
             <div class="controls">
                 <div id="difficultyControls" class="difficulty-controls">
-                    <div class="star-rating">
-                        <span class="star" onclick="rateDifficulty(0)" data-value="0"></span>
-                        <span class="star" onclick="rateDifficulty(1)" data-value="1"></span>
-                        <span class="star" onclick="rateDifficulty(2)" data-value="2"></span>
-                        <span class="star" onclick="rateDifficulty(3)" data-value="3"></span>
-                        <span class="star" onclick="rateDifficulty(4)" data-value="4"></span>
-                        <span class="star" onclick="rateDifficulty(5)" data-value="5"></span>
-                    </div>
+<div class="star-rating">
+    <span class="star" onclick="rateDifficulty(5)" data-value="5"></span>
+    <span class="star" onclick="rateDifficulty(4)" data-value="4"></span>
+    <span class="star" onclick="rateDifficulty(3)" data-value="3"></span>
+    <span class="star" onclick="rateDifficulty(2)" data-value="2"></span>
+    <span class="star" onclick="rateDifficulty(1)" data-value="1"></span>
+    <span class="star" onclick="rateDifficulty(0)" data-value="0"></span>
+</div>
                 </div>
             </div>
         </div>
