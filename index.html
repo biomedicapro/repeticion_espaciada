@@ -155,9 +155,13 @@
             font-size: clamp(20px, 5vw, 48px); 
             line-height: 1.4; 
             max-width: 100%; 
-            word-wrap: break-word; 
-            hyphens: auto;
-        }
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+
+  /* Permite el quiebre de palabra sin guiones */
+  overflow-wrap: break-word;    /* estándar moderno */
+  word-break: break-word;         }
 
         .answer { 
             display: none; 
